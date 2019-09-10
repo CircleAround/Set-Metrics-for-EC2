@@ -1,0 +1,2 @@
+#!/bin/bash
+ls | grep -v -E 'bin|README' | xargs zip -r ../lambda.zip
