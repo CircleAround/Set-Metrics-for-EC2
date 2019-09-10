@@ -33,14 +33,14 @@ def on_launched(instance_id)
                                  dimensions: [{name: "InstanceId", value: instance.id}], # インスタンスを指定
                                  metric_name: 'MemoryUtilization', # メモリ使用率の最大
                                  statistic: "Maximum",
-                                 threshold: 50, # > 50 %
+                                 threshold: 60, # > 50 %
                                  unit: 'Percent',
                                  comparison_operator: "GreaterThanThreshold",
                                  period: 300, # 5分間のうち1回
                                  evaluation_periods: 1,
                                  datapoints_to_alarm: 1,
                                  treat_missing_data: "ignore", # データなしは無視
-                                 alarm_actions: [ENV['TOPIC_ARN']], # 閾値を超えたら警告通知
+                                 alarm_actions: [ENV['TOPIC_ARN']], # 閾値を超えたら警告通知 通知が必要ないならから配列でも良い
                                  # 監視状態が戻ったことも通知できる
                                  # ok_actions: [ ENV['TOPIC_ARN'] ],
                              })
